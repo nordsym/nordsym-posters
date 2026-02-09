@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NordSym @ TechArena 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nord-cyan: #00D4FF;
+            --nord-purple: #9370DB;
+            --nord-orange: #FF8C00;
+            --nord-bg: #050608;
+            --nord-text: #FFFFFF;
+            --nord-text-secondary: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--nord-bg);
+            color: var(--nord-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .poster {
+            width: 1080px;
+            height: 1350px;
+            background: linear-gradient(180deg, var(--nord-bg) 0%, #0a0d12 50%, var(--nord-bg) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 40px;
+        }
+
+        /* Subtle background effects */
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(147, 112, 219, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Grid lines background */
+        .poster::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+        }
+
+        .brand-name {
+            font-family: 'Comfortaa', cursive;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, var(--nord-cyan) 0%, var(--nord-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+        }
+
+        .attending-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--nord-text-secondary);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .event-name {
+            font-family: 'Comfortaa', cursive;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--nord-text);
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--nord-orange);
+            letter-spacing: 2px;
+            margin-bottom: 80px;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .profile-ring {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--nord-cyan), var(--nord-purple), var(--nord-orange));
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 4px;
+            background: var(--nord-bg);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .person-name {
+            font-family: 'Comfortaa', cursive;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--nord-text);
+            margin-bottom: 8px;
+        }
+
+        .person-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--nord-cyan);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 80px;
+        }
+
+        .cta-container {
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--nord-bg);
+            background: linear-gradient(135deg, var(--nord-cyan) 0%, var(--nord-purple) 100%);
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.4);
+        }
+
+        .cta-subtext {
+            font-size: 16px;
+            color: var(--nord-text-secondary);
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        /* Responsive for viewing */
+        @media (max-width: 1100px) {
+            .poster {
+                width: 100%;
+                max-width: 540px;
+                height: auto;
+                aspect-ratio: 1080 / 1350;
+                padding: 30px 20px;
+            }
+
+            .logo { width: 60px; margin-bottom: 10px; }
+            .brand-name { font-size: 24px; letter-spacing: 4px; margin-bottom: 30px; }
+            .attending-text { font-size: 12px; letter-spacing: 3px; margin-bottom: 10px; }
+            .event-name { font-size: 36px; margin-bottom: 5px; }
+            .event-date { font-size: 16px; margin-bottom: 40px; }
+            .profile-ring { width: 120px; height: 120px; }
+            .person-name { font-size: 18px; }
+            .person-title { font-size: 11px; margin-bottom: 40px; }
+            .cta-button { padding: 10px 25px; font-size: 10px; }
+            .cta-subtext { font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="content">
+            <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="logo">
+            <div class="brand-name">NORDSYM</div>
+            
+            <div class="attending-text">Is Attending</div>
+            <div class="event-name">TechArena</div>
+            <div class="event-date">11-12 February 2026</div>
+            
+            <div class="profile-container">
+                <div class="profile-ring">
+                    <div class="profile-inner">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/nordsym-funnel.firebasestorage.app/o/T2ZJ4JKR_400x400.jpg?alt=media&token=b0449d0a-bedc-462d-98f9-1258890f2391" alt="Gustav Hemmingsson" class="profile-image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="person-name">Gustav Hemmingsson</div>
+            <div class="person-title">Founder</div>
+            
+            <div class="cta-container">
+                <a href="https://nordsym.github.io/NordSym-Scheduler/" class="cta-button" target="_blank">
+                    Book a Meeting
+                </a>
+                <div class="cta-subtext">nordsym.com</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
