@@ -4,21 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NordSym @ TechArena 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* NordSym.com Design System */
-        :root {
-            --nord-bg: #f0f4f8;
-            --nord-bg-card: #ffffff;
-            --nord-text-primary: #0f172a;
-            --nord-text-secondary: #1e293b;
-            --nord-text-muted: #64748b;
-            --nord-accent: #0f172a;
-            --nord-border: #e2e8f0;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +14,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #1e293b;
+            background: #0a0a0f;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -38,35 +25,38 @@
         .poster {
             width: 1080px;
             height: 1350px;
-            background: var(--nord-bg);
+            background: linear-gradient(180deg, #050608 0%, #0d1117 50%, #050608 100%);
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             padding: 80px 60px;
+            overflow: hidden;
         }
 
-        /* Subtle decorative elements matching NordSym.com */
+        /* Subtle grid background */
         .poster::before {
             content: '';
             position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(15, 23, 42, 0.03) 0%, transparent 70%);
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
         }
 
+        /* Glow effects */
         .poster::after {
             content: '';
             position: absolute;
-            bottom: -200px;
-            left: -200px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(15, 23, 42, 0.02) 0%, transparent 70%);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -76,256 +66,196 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100%;
             width: 100%;
+            height: 100%;
         }
 
-        /* Header with logo */
+        /* Top section - Logo and brand */
         .header {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 16px;
             margin-bottom: 60px;
         }
 
         .logo {
-            width: 48px;
-            height: auto;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4));
         }
 
         .brand-name {
-            font-family: 'Comfortaa', sans-serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--nord-text-primary);
-            letter-spacing: 2px;
+            font-family: 'Comfortaa', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 12px;
+            color: #ffffff;
         }
 
-        /* Event badge */
-        .event-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--nord-bg-card);
-            border: 1px solid var(--nord-border);
-            border-radius: 100px;
-            margin-bottom: 40px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .event-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-        }
-
-        .event-badge-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--nord-text-secondary);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Main headline - DM Serif Display like NordSym.com */
-        .headline {
-            font-family: 'DM Serif Display', serif;
-            font-size: 96px;
-            font-weight: 400;
-            color: var(--nord-text-primary);
-            text-align: center;
-            line-height: 1.05;
-            margin-bottom: 16px;
-        }
-
-        .event-date {
-            font-family: 'Inter', sans-serif;
-            font-size: 24px;
-            font-weight: 500;
-            color: var(--nord-text-muted);
-            letter-spacing: 1px;
-            margin-bottom: 80px;
-        }
-
-        /* Profile card */
-        .profile-card {
-            background: var(--nord-bg-card);
-            border: 1px solid var(--nord-border);
-            border-radius: 24px;
-            padding: 48px 64px;
+        /* Middle section - Event info */
+        .event-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            margin-bottom: 60px;
+            flex: 1;
+            justify-content: center;
         }
 
-        .profile-image-container {
-            width: 180px;
-            height: 180px;
+        .attending-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            margin-bottom: 40px;
+        }
+
+        .attending-dot {
+            width: 10px;
+            height: 10px;
+            background: #00D4FF;
             border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 32px;
-            border: 3px solid var(--nord-border);
+            box-shadow: 0 0 10px #00D4FF;
+        }
+
+        .attending-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00D4FF;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .event-name {
+            font-family: 'Comfortaa', cursive;
+            font-size: 96px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 16px;
+            text-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .event-details {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 2px;
+            margin-bottom: 80px;
+        }
+
+        /* Profile section */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-ring {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #00D4FF, #9370DB);
+            margin-bottom: 24px;
+        }
+
+        .profile-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #050608;
+            padding: 4px;
         }
 
         .profile-image {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
         }
 
         .person-name {
-            font-family: 'DM Serif Display', serif;
-            font-size: 42px;
-            font-weight: 400;
-            color: var(--nord-text-primary);
+            font-family: 'Comfortaa', cursive;
+            font-size: 36px;
+            font-weight: 600;
+            color: #ffffff;
             margin-bottom: 8px;
         }
 
         .person-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 500;
-            color: var(--nord-text-muted);
-            letter-spacing: 2px;
+            color: #00D4FF;
+            letter-spacing: 4px;
             text-transform: uppercase;
         }
 
-        /* CTA section */
-        .cta-container {
-            margin-top: auto;
+        /* Bottom section - CTA */
+        .footer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            margin-top: auto;
         }
 
         .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 48px;
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
+            display: inline-block;
+            padding: 24px 60px;
+            font-size: 20px;
             font-weight: 600;
-            color: #ffffff;
-            background: var(--nord-accent);
+            color: #050608;
+            background: linear-gradient(135deg, #00D4FF 0%, #9370DB 100%);
             border: none;
-            border-radius: 100px;
+            border-radius: 60px;
             text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
-        }
-
-        .cta-subtext {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            color: var(--nord-text-muted);
-        }
-
-        /* Footer decoration */
-        .footer-decoration {
-            position: absolute;
-            bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .footer-line {
-            width: 60px;
-            height: 1px;
-            background: var(--nord-border);
-        }
-
-        .footer-logo {
-            width: 32px;
-            height: auto;
-            opacity: 0.5;
-        }
-
-        /* Responsive for viewing */
-        @media (max-width: 1100px) {
-            .poster {
-                width: 100%;
-                max-width: 540px;
-                height: auto;
-                aspect-ratio: 1080 / 1350;
-                padding: 40px 30px;
-            }
-
-            .header { margin-bottom: 30px; gap: 10px; }
-            .logo { width: 28px; }
-            .brand-name { font-size: 16px; letter-spacing: 1px; }
-            .event-badge { padding: 8px 16px; margin-bottom: 20px; }
-            .event-badge-dot { width: 6px; height: 6px; }
-            .event-badge-text { font-size: 10px; }
-            .headline { font-size: 48px; margin-bottom: 8px; }
-            .event-date { font-size: 14px; margin-bottom: 40px; }
-            .profile-card { padding: 24px 32px; border-radius: 16px; margin-bottom: 30px; }
-            .profile-image-container { width: 100px; height: 100px; margin-bottom: 16px; }
-            .person-name { font-size: 24px; }
-            .person-title { font-size: 11px; letter-spacing: 1px; }
-            .cta-button { padding: 12px 28px; font-size: 12px; }
-            .cta-subtext { font-size: 10px; }
-            .footer-decoration { bottom: 20px; gap: 12px; }
-            .footer-line { width: 30px; }
-            .footer-logo { width: 18px; }
+        .website {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
     <div class="poster">
         <div class="content">
-            <!-- Header -->
             <div class="header">
                 <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="logo">
                 <div class="brand-name">NORDSYM</div>
             </div>
 
-            <!-- Event badge -->
-            <div class="event-badge">
-                <div class="event-badge-dot"></div>
-                <span class="event-badge-text">Vi ses på</span>
-            </div>
-
-            <!-- Main headline -->
-            <h1 class="headline">TechArena</h1>
-            <div class="event-date">11–12 februari 2026 · Stockholm</div>
-
-            <!-- Profile card -->
-            <div class="profile-card">
-                <div class="profile-image-container">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/nordsym-funnel.firebasestorage.app/o/T2ZJ4JKR_400x400.jpg?alt=media&token=b0449d0a-bedc-462d-98f9-1258890f2391" alt="Gustav Hemmingsson" class="profile-image">
+            <div class="event-section">
+                <div class="attending-badge">
+                    <div class="attending-dot"></div>
+                    <span class="attending-text">Vi ses på</span>
                 </div>
-                <div class="person-name">Gustav Hemmingsson</div>
-                <div class="person-title">Grundare</div>
+                
+                <div class="event-name">TechArena</div>
+                <div class="event-details">11–12 februari 2026 · Stockholm</div>
+
+                <div class="profile-section">
+                    <div class="profile-ring">
+                        <div class="profile-inner">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/nordsym-funnel.firebasestorage.app/o/T2ZJ4JKR_400x400.jpg?alt=media&token=b0449d0a-bedc-462d-98f9-1258890f2391" alt="Gustav Hemmingsson" class="profile-image">
+                        </div>
+                    </div>
+                    <div class="person-name">Gustav Hemmingsson</div>
+                    <div class="person-title">Founder</div>
+                </div>
             </div>
 
-            <!-- CTA -->
-            <div class="cta-container">
-                <a href="https://nordsym.github.io/NordSym-Scheduler/" class="cta-button" target="_blank">
-                    Boka ett möte
+            <div class="footer">
+                <a href="https://nordsym.github.io/NordSym-Scheduler/" class="cta-button">
+                    Boka möte →
                 </a>
-                <div class="cta-subtext">nordsym.com</div>
+                <div class="website">nordsym.com</div>
             </div>
-        </div>
-
-        <!-- Footer decoration -->
-        <div class="footer-decoration">
-            <div class="footer-line"></div>
-            <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="" class="footer-logo">
-            <div class="footer-line"></div>
         </div>
     </div>
 </body>
